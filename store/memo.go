@@ -266,6 +266,69 @@ func (s *Store) FindMemosVisibilityList(ctx context.Context, memoIDs []int) ([]V
 
 	return visibilityList, nil
 }
+func createLink(ctx context.Context, tx *sql.Tx, int memosId, int linkedMemosId) error {
+	placeholder := []string{"?", "?", "?"}
+
+	query := `
+		INSERT INTO memo_relation (
+			memo_id,
+			linked_memo_id
+		)
+		VALUES (` + strings.Join(placeholder, ",") + `)
+		RETURNING id
+	`
+	tx.QueryRowContext(ctx, query)
+
+	return nil
+}
+
+func findRelationMemosRawList(ctx context.Context, tx *sql.Tx, memosId int) ([]int, error) {
+	query := `
+		SELECT
+			memo.linked_memo_id,
+		FROM memo
+		WHERE memo_id` + strconv.Itoa(memosId) + `
+		ORDER BY pinned DESC, memo.created_ts DESC
+	`
+	rows, err := tx.QueryContext(ctx, query)
+	if err != nil {
+		return nil, FormatError(err)
+	}
+	linkedMemoIdList := make([]int, 0)
+
+	for rows.Next() {
+		var linkedMemoId int
+		if err := rows.Scan(&linkedMemoId); err != nil {
+			return nil, FormatError(err)
+		}
+		linkedMemoIdList = append(linkedMemoIdList, linkedMemoId)
+	}
+	return linkedMemoIdList, nil
+}
+
+func findBackRelationMemosRawList(ctx context.Context, tx *sql.Tx, memosId int) ([]int, error) {
+	query := `
+		SELECT
+			memo.memo_id,
+		FROM memo
+		WHERE linked_memo_id` + strconv.Itoa(memosId) + `
+		ORDER BY pinned DESC, memo.created_ts DESC
+	`
+	rows, err := tx.QueryContext(ctx, query)
+	if err != nil {
+		return nil, FormatError(err)
+	}
+	linkedMemoIdList := make([]int, 0)
+
+	for rows.Next() {
+		var linkedMemoId int
+		if err := rows.Scan(&linkedMemoId); err != nil {
+			return nil, FormatError(err)
+		}
+		linkedMemoIdList = append(linkedMemoIdList, linkedMemoId)
+	}
+	return linkedMemoIdList, nil
+}
 
 func listMemos(ctx context.Context, tx *sql.Tx, find *FindMemoMessage) ([]*MemoMessage, error) {
 	where, args := []string{"1 = 1"}, []any{}
