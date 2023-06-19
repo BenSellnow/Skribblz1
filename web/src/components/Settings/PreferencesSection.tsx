@@ -20,7 +20,7 @@ const PreferencesSection = () => {
   const visibilitySelectorItems = VISIBILITY_SELECTOR_ITEMS.map((item) => {
     return {
       value: item.value,
-      text: t(`skribbl.visibility.${item.text.toLowerCase()}`),
+      text: t(`memo.visibility.${item.text.toLowerCase()}`),
     };
   });
 
@@ -37,7 +37,7 @@ const PreferencesSection = () => {
   };
 
   const handleDefaultMemoVisibilityChanged = async (value: string) => {
-    await userStore.upsertUserSetting("memo-visibility", value);
+    await userStore.upsertUserSetting("skribbl-visibility", value);
   };
 
   const handleDoubleClickEnabledChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
