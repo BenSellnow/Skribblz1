@@ -164,14 +164,14 @@ const MemoList = () => {
           <p className="status-text">
             {isComplete ? (
               sortedMemos.length === 0 ? (
-                t("message.no-memos")
+                "No Skribblz 🌃"
               ) : (
-                t("message.memos-ready")
+                "All Skribblz are ready 🎉"
               )
             ) : (
               <>
                 <span className="cursor-pointer hover:text-green-600" onClick={handleFetchMoreClick}>
-                  {t("memo.fetch-more")}
+                  Fetch More Skribblz
                 </span>
               </>
             )}
