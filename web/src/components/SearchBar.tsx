@@ -34,7 +34,7 @@ const SearchBar = () => {
       <input
         className="flex ml-2 w-24 grow text-sm outline-none bg-transparent dark:text-gray-200"
         type="text"
-        placeholder={t("memo.search-placeholder")}
+        placeholder="Search Skribblz"
         ref={inputRef}
         value={queryText}
         onChange={handleTextQueryInput}
