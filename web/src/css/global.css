@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Segoe Print';
+  src: url("https://db.onlinewebfonts.com/t/d7abfa52675c67654ecc2a8213bc58ae.woff2") format('woff2'),
+       url("https://db.onlinewebfonts.com/t/d7abfa52675c67654ecc2a8213bc58ae.woff") format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 html,
 body {
   @apply text-base w-full h-full dark:bg-zinc-800;
