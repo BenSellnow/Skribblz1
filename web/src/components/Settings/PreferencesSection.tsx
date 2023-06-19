@@ -37,7 +37,7 @@ const PreferencesSection = () => {
   };
 
   const handleDefaultMemoVisibilityChanged = async (value: string) => {
-    await userStore.upsertUserSetting("skribbl-visibility", value);
+    await userStore.upsertUserSetting("memo-visibility", value);
   };
 
   const handleDoubleClickEnabledChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -79,7 +79,7 @@ const PreferencesSection = () => {
       </div>
       <p className="title-text">{t("setting.preference")}</p>
       <div className="form-label selector">
-        <span className="text-sm break-keep text-ellipsis overflow-hidden">{t("setting.preference-section.default-memo-visibility")}</span>
+        <span className="text-sm break-keep text-ellipsis overflow-hidden">Default Skribblz Visibility</span>
         <Select
           className="!min-w-fit"
           value={setting.memoVisibility}
