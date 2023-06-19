@@ -39,7 +39,7 @@ const UsageHeatMap = () => {
   const usedDaysAmount = (tableConfig.width - 1) * tableConfig.height + todayDay;
   const beginDayTimestamp = todayTimeStamp - usedDaysAmount * DAILY_TIMESTAMP;
   const memos = memoStore.state.memos;
-  const [skribblAmount, setSkribblAmount] = useState(0);
+  const [memoAmount, setMemoAmount] = useState(0);
   const [createdDays, setCreatedDays] = useState(0);
   const [allStat, setAllStat] = useState<DailyUsageStat[]>(getInitialUsageStat(usedDaysAmount, beginDayTimestamp));
   const [currentStat, setCurrentStat] = useState<DailyUsageStat | null>(null);
@@ -58,7 +58,7 @@ const UsageHeatMap = () => {
   useEffect(() => {
     getMemoStats(currentUserId)
       .then(({ data: { data } }) => {
-        setSkribblAmount(data.length);
+        setMemoAmount(data.length);
         const newStat: DailyUsageStat[] = getInitialUsageStat(usedDaysAmount, beginDayTimestamp);
         for (const record of data) {
           const index = (getDateStampByDate(record * 1000) - beginDayTimestamp) / (1000 * 3600 * 24) - 1;
@@ -83,8 +83,8 @@ const UsageHeatMap = () => {
     const bounding = utils.getElementBounding(event.target as HTMLElement);
     tempDiv.style.left = bounding.left + "px";
     tempDiv.style.top = bounding.top - 2 + "px";
-    const tSkribblOnOpts = { amount: item.count, date: getDateString(item.timestamp as number) };
-    tempDiv.innerHTML = item.count === 1 ? t("heatmap.skribbl-on", tSkribblOnOpts) : t("heatmap.skribbls-on", tSkribblOnOpts);
+    const tMemoOnOpts = { amount: item.count, date: getDateString(item.timestamp as number) };
+    tempDiv.innerHTML = item.count === 1 ? t("heatmap.memo-on", tMemoOnOpts) : t("heatmap.memos-on", tMemoOnOpts);
     document.body.appendChild(tempDiv);
 
     if (tempDiv.offsetLeft - tempDiv.clientWidth / 2 < 0) {
@@ -109,7 +109,7 @@ const UsageHeatMap = () => {
 
   // This interpolation is not being used because of the current styling,
   // but it can improve translation quality by giving it a more meaningful context
-  const tSkribblInOpts = { amount: skribblAmount, period: "", date: "" };
+  const tMemoInOpts = { amount: memoAmount, period: "", date: "" };
 
   return (
     <>
@@ -160,6 +160,12 @@ const UsageHeatMap = () => {
           <span className="tip-text">{t("days.sat")}</span>
         </div>
       </div>
+      <p className="w-full pl-4 text-xs -mt-2 mb-3 text-gray-400 dark:text-zinc-400">
+        <span className="font-medium text-gray-500 dark:text-zinc-300 number">{memoAmount} </span>
+        {memoAmount === 1 ? "Skribbl in" : "Skribblz in"}{" "}
+        <span className="font-medium text-gray-500 dark:text-zinc-300">{createdDays} </span>
+        {createdDays === 1 ? t("heatmap.day", tMemoInOpts) : t("heatmap.days", tMemoInOpts)}
+      </p>
     </>
   );
 };
