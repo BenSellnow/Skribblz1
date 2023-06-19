@@ -162,10 +162,9 @@ const UsageHeatMap = () => {
       </div>
       <p className="w-full pl-4 text-xs -mt-2 mb-3 text-gray-400 dark:text-zinc-400">
         <span className="font-medium text-gray-500 dark:text-zinc-300 number">{memoAmount} </span>
-        {memoAmount === 1 ? `${memoAmount} skribbl` : `${memoAmount} skribblz`}
-        {" on "}
-        <span className="font-medium text-gray-500 dark:text-zinc-300">{createdDays} </span>
-        {createdDays === 1 ? "day" : "days"}
+        {memoAmount === 1
+          ? `skribbl on ${getDateString(createdDays)}`
+          : `skribblz on ${getDateString(createdDays)}`}
       </p>
     </>
   );
