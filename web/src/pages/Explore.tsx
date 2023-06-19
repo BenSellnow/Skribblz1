@@ -94,7 +94,7 @@ const Explore = () => {
           })}
           {isComplete ? (
             state.memos.length === 0 ? (
-              <p className="w-full text-center mt-12 text-gray-600">{t("message.no-memos")}</p>
+              <p className="w-full text-center mt-12 text-gray-600">No Skribblz</p>
             ) : null
           ) : (
             <p className="m-auto text-center mt-4 italic cursor-pointer text-gray-500 hover:text-green-600" onClick={handleFetchMoreClick}>
