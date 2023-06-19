@@ -188,7 +188,7 @@ const SystemSection = () => {
     });
     globalStore.setSystemStatus({ disablePublicMemos: value });
     await api.upsertSystemSetting({
-      name: "disable-public-memos",
+      name: "disable-public-skribblz",
       value: JSON.stringify(value),
     });
   };
@@ -250,7 +250,7 @@ const SystemSection = () => {
         <Switch checked={state.allowSignUp} onChange={(event) => handleAllowSignUpChanged(event.target.checked)} />
       </div>
       <div className="form-label">
-        <span className="normal-text">{t("setting.system-section.disable-public-memos")}</span>
+        <span className="normal-text">{t("setting.system-section.disable-public-skribblz")}</span>
         <Switch checked={state.disablePublicMemos} onChange={(event) => handleDisablePublicMemosChanged(event.target.checked)} />
       </div>
       <div className="form-label">
