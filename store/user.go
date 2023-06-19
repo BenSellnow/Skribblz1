@@ -14,7 +14,7 @@ func (s *Store) SeedDataForNewUser(ctx context.Context, user *api.User) error {
 	// Create a memo for the user.
 	_, err := s.CreateMemo(ctx, &MemoMessage{
 		CreatorID:  user.ID,
-		Content:    "#inbox Welcome to Memos!",
+		Content:    "#inbox Welcome to Skribblz!",
 		Visibility: Private,
 	})
 	if err != nil {
