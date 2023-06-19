@@ -48,7 +48,7 @@ const ArchivedMemoDialog: React.FC<Props> = (props: Props) => {
           </div>
         ) : archivedMemos.length === 0 ? (
           <div className="tip-text-container">
-            <p className="tip-text">{t("memo.no-archived-memos")}</p>
+            <p className="tip-text">No archived skribblz.</p>
           </div>
         ) : (
           <div className="archived-memos-container">
