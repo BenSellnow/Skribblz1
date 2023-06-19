@@ -27,8 +27,8 @@ const AboutSiteDialog: React.FC<Props> = ({ destroy }: Props) => {
         </button>
       </div>
       <div className="flex flex-col justify-start items-start max-w-full w-96">
-        <p className="text-xs">{t("about.memos-description")}</p>
-        <p className="text-sm mt-2 ">{customizedProfile.description || t("about.no-server-description")}</p>
+        <p className="text-xs">Skribblz is a web-based note-taking application that you can use to write, organize, and share notes.</p>
+        <p className="text-sm mt-2 ">{customizedProfile.description || "Capture, Remember, Skribbl."}</p>
         <div className="mt-4 w-full flex flex-row text-sm justify-start items-center">
           <div className="flex flex-row justify-start items-center mr-2">
             {t("about.powered-by")}
