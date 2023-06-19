@@ -120,14 +120,20 @@ const UsageHeatMap = () => {
             const colorLevel =
               count <= 0
                 ? ""
-                : count <= 1
+                : count === 1
                 ? "stat-day-l1-bg"
                 : count <= 2
                 ? "stat-day-l2-bg"
                 : count <= 4
                 ? "stat-day-l3-bg"
                 : "stat-day-l4-bg";
-
+            const text =
+              count === 1
+                ? "skribbl"
+                : count === 0 || count >= 2
+                ? "skribbz"
+                : "";
+  
             return (
               <div
                 className="stat-wrapper"
@@ -140,7 +146,9 @@ const UsageHeatMap = () => {
                   className={`stat-container ${colorLevel} ${currentStat === v ? "current" : ""} ${
                     todayTimeStamp === v.timestamp ? "today" : ""
                   }`}
-                ></span>
+                >
+                  {text}
+                </span>
               </div>
             );
           })}
