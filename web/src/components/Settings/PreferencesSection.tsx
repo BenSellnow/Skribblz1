@@ -79,7 +79,7 @@ const PreferencesSection = () => {
       </div>
       <p className="title-text">{t("setting.preference")}</p>
       <div className="form-label selector">
-        <span className="text-sm break-keep text-ellipsis overflow-hidden">Default Skribblz Visibility</span>
+        <span className="text-sm break-keep text-ellipsis overflow-hidden">Default Skribbl Visibility</span>
         <Select
           className="!min-w-fit"
           value={setting.memoVisibility}
