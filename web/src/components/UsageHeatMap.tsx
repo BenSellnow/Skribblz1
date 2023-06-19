@@ -83,8 +83,7 @@ const UsageHeatMap = () => {
     const bounding = utils.getElementBounding(event.target as HTMLElement);
     tempDiv.style.left = bounding.left + "px";
     tempDiv.style.top = bounding.top - 2 + "px";
-    const tMemoOnOpts = { amount: item.count, date: getDateString(item.timestamp as number) };
-    tempDiv.innerHTML = item.count === 1 ? t("heatmap.memo-on", tMemoOnOpts) : t("heatmap.memos-on", tMemoOnOpts);
+    tempDiv.innerHTML = item.count === 1 ? "skribbl" : "skribblz";
     document.body.appendChild(tempDiv);
 
     if (tempDiv.offsetLeft - tempDiv.clientWidth / 2 < 0) {
