@@ -127,7 +127,7 @@ const ShareMemoDialog: React.FC<Props> = (props: Props) => {
   return (
     <>
       <div className="dialog-header-container py-3 px-4 !mb-0 rounded-t-lg">
-        <p className="">{t("common.share")} Memo</p>
+        <p className="">{t("common.share")} Skribbl</p>
         <button className="btn close-btn" onClick={handleCloseBtnClick}>
           <Icon.X className="icon-img" />
         </button>
@@ -186,7 +186,7 @@ const ShareMemoDialog: React.FC<Props> = (props: Props) => {
               <div className="w-auto grow truncate flex mr-2 flex-col justify-center items-start">
                 <span className="w-full text-sm truncate font-bold text-gray-600 dark:text-gray-300">{user.nickname || user.username}</span>
                 <span className="text-xs text-gray-400">
-                  {state.memoAmount} MEMOS / {createdDays} DAYS
+                  {state.memoAmount} SKRIBBLZ / {createdDays} DAYS
                 </span>
               </div>
               <QRCodeSVG
