@@ -13,11 +13,11 @@ const MobileHeader = (props: Props) => {
   const layoutStore = useLayoutStore();
   const filter = filterStore.state;
   const shortcuts = shortcutStore.state.shortcuts;
-  const [titleText, setTitleText] = useState("MEMOS");
+  const [titleText, setTitleText] = useState("SKRIBBLZ");
 
   useEffect(() => {
     if (!filter.shortcutId) {
-      setTitleText("MEMOS");
+      setTitleText("SKRIBBLZ");
       return;
     }
 
